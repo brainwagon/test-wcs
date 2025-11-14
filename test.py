@@ -123,4 +123,28 @@ barb2_x = end_x - arrowhead_length * math.sin(angle_rad - arrowhead_angle)
 barb2_y = end_y + arrowhead_length * math.cos(angle_rad - arrowhead_angle)
 draw.line([end_x, end_y, barb2_x, barb2_y], fill="red", width=3)
 
+# Add the label "N" at the tip
+font_size = 15
+try:
+    from PIL import ImageFont
+    font = ImageFont.truetype("arial.ttf", font_size)
+except IOError:
+    font = ImageFont.load_default()
+
+# Calculate text position with a small offset from the arrow tip
+text_offset = 10 # Increased offset to avoid overlap with arrowhead
+text_x = end_x + text_offset * math.sin(angle_rad)
+text_y = end_y - text_offset * math.cos(angle_rad)
+
+# Adjust text position to center it roughly
+# Note: draw.textsize is deprecated, using font.getbbox for modern Pillow
+bbox = font.getbbox("N")
+text_width = bbox[2] - bbox[0]
+text_height = bbox[3] - bbox[1]
+
+text_x -= text_width / 2
+text_y -= text_height / 2
+
+draw.text((text_x, text_y), "N", fill="white", font=font)
+
 img.save("overlay.jpg")
