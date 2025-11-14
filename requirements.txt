@@ -1,0 +1,5 @@
+ephem
+Pillow
+numpy
+tetra3
+astropy
