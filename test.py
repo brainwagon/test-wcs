@@ -100,4 +100,13 @@ for j in range(floor(cdec-6), ceil(cdec+6), 2):
         except:
             pass
 
+center_x = w / 2
+center_y = h / 2
+arrow_length = 20
+angle = 0 - solution["Roll"]
+angle_rad = math.radians(angle)
+end_x = center_x + arrow_length * math.sin(angle_rad)
+end_y = center_y - arrow_length * math.cos(angle_rad)
+draw.line([center_x, center_y, end_x, end_y], fill="red", width=3)
+
 img.save("overlay.jpg")
