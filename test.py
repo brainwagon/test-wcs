@@ -102,11 +102,25 @@ for j in range(floor(cdec-6), ceil(cdec+6), 2):
 
 center_x = w / 2
 center_y = h / 2
-arrow_length = 20
+arrow_length = 40
 angle = 0 - solution["Roll"]
 angle_rad = math.radians(angle)
 end_x = center_x + arrow_length * math.sin(angle_rad)
 end_y = center_y - arrow_length * math.cos(angle_rad)
 draw.line([center_x, center_y, end_x, end_y], fill="red", width=3)
+
+# Draw the arrowhead (pointed V)
+arrowhead_length = 10
+arrowhead_angle = math.radians(30)
+
+# First barb
+barb1_x = end_x - arrowhead_length * math.sin(angle_rad + arrowhead_angle)
+barb1_y = end_y + arrowhead_length * math.cos(angle_rad + arrowhead_angle)
+draw.line([end_x, end_y, barb1_x, barb1_y], fill="red", width=3)
+
+# Second barb
+barb2_x = end_x - arrowhead_length * math.sin(angle_rad - arrowhead_angle)
+barb2_y = end_y + arrowhead_length * math.cos(angle_rad - arrowhead_angle)
+draw.line([end_x, end_y, barb2_x, barb2_y], fill="red", width=3)
 
 img.save("overlay.jpg")
