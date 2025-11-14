@@ -147,4 +147,33 @@ text_y -= text_height / 2
 
 draw.text((text_x, text_y), "N", fill="white", font=font)
 
+# Second arrow (E)
+angle_e = angle + 90
+angle_rad_e = math.radians(angle_e)
+end_x_e = center_x + arrow_length * math.sin(angle_rad_e)
+end_y_e = center_y - arrow_length * math.cos(angle_rad_e)
+draw.line([center_x, center_y, end_x_e, end_y_e], fill="red", width=3)
+
+# Arrowhead for the second arrow
+barb1_x_e = end_x_e - arrowhead_length * math.sin(angle_rad_e + arrowhead_angle)
+barb1_y_e = end_y_e + arrowhead_length * math.cos(angle_rad_e + arrowhead_angle)
+draw.line([end_x_e, end_y_e, barb1_x_e, barb1_y_e], fill="red", width=3)
+
+barb2_x_e = end_x_e - arrowhead_length * math.sin(angle_rad_e - arrowhead_angle)
+barb2_y_e = end_y_e + arrowhead_length * math.cos(angle_rad_e - arrowhead_angle)
+draw.line([end_x_e, end_y_e, barb2_x_e, barb2_y_e], fill="red", width=3)
+
+# Label for the second arrow
+text_x_e = end_x_e + text_offset * math.sin(angle_rad_e)
+text_y_e = end_y_e - text_offset * math.cos(angle_rad_e)
+
+bbox_e = font.getbbox("E")
+text_width_e = bbox_e[2] - bbox_e[0]
+text_height_e = bbox_e[3] - bbox_e[1]
+
+text_x_e -= text_width_e / 2
+text_y_e -= text_height_e / 2
+
+draw.text((text_x_e, text_y_e), "E", fill="white", font=font)
+
 img.save("overlay.jpg")
