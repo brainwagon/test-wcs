@@ -107,7 +107,7 @@ angle = 0 - solution["Roll"]
 angle_rad = math.radians(angle)
 end_x = center_x + arrow_length * math.sin(angle_rad)
 end_y = center_y - arrow_length * math.cos(angle_rad)
-draw.line([center_x, center_y, end_x, end_y], fill="red", width=3)
+draw.line([center_x, center_y, end_x, end_y], fill="red", width=2)
 
 # Draw the arrowhead (pointed V)
 arrowhead_length = 10
@@ -116,12 +116,12 @@ arrowhead_angle = math.radians(30)
 # First barb
 barb1_x = end_x - arrowhead_length * math.sin(angle_rad + arrowhead_angle)
 barb1_y = end_y + arrowhead_length * math.cos(angle_rad + arrowhead_angle)
-draw.line([end_x, end_y, barb1_x, barb1_y], fill="red", width=3)
+draw.line([end_x, end_y, barb1_x, barb1_y], fill="red", width=2)
 
 # Second barb
 barb2_x = end_x - arrowhead_length * math.sin(angle_rad - arrowhead_angle)
 barb2_y = end_y + arrowhead_length * math.cos(angle_rad - arrowhead_angle)
-draw.line([end_x, end_y, barb2_x, barb2_y], fill="red", width=3)
+draw.line([end_x, end_y, barb2_x, barb2_y], fill="red", width=2)
 
 # Add the label "N" at the tip
 font_size = 15
@@ -148,20 +148,20 @@ text_y -= text_height / 2
 draw.text((text_x, text_y), "N", fill="white", font=font)
 
 # Second arrow (E)
-angle_e = angle + 90
+angle_e = angle - 90
 angle_rad_e = math.radians(angle_e)
 end_x_e = center_x + arrow_length * math.sin(angle_rad_e)
 end_y_e = center_y - arrow_length * math.cos(angle_rad_e)
-draw.line([center_x, center_y, end_x_e, end_y_e], fill="red", width=3)
+draw.line([center_x, center_y, end_x_e, end_y_e], fill="red", width=2)
 
 # Arrowhead for the second arrow
 barb1_x_e = end_x_e - arrowhead_length * math.sin(angle_rad_e + arrowhead_angle)
 barb1_y_e = end_y_e + arrowhead_length * math.cos(angle_rad_e + arrowhead_angle)
-draw.line([end_x_e, end_y_e, barb1_x_e, barb1_y_e], fill="red", width=3)
+draw.line([end_x_e, end_y_e, barb1_x_e, barb1_y_e], fill="red", width=2)
 
 barb2_x_e = end_x_e - arrowhead_length * math.sin(angle_rad_e - arrowhead_angle)
 barb2_y_e = end_y_e + arrowhead_length * math.cos(angle_rad_e - arrowhead_angle)
-draw.line([end_x_e, end_y_e, barb2_x_e, barb2_y_e], fill="red", width=3)
+draw.line([end_x_e, end_y_e, barb2_x_e, barb2_y_e], fill="red", width=2)
 
 # Label for the second arrow
 text_x_e = end_x_e + text_offset * math.sin(angle_rad_e)

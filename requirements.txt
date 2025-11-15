@@ -1,5 +1,5 @@
 ephem
 Pillow
 numpy
-tetra3
 astropy
+git+https://github.com/esa/tetra3.git
